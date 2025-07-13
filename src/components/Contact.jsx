@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter, MessageCircle } from 'lucide-react'
+import emailjs from '@emailjs/browser'
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -18,21 +19,58 @@ const Contact = () => {
     })
   }
 
+  // Using EmailJS to send emails
   const handleSubmit = async (e) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setSubmitStatus(null)
     
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false)
-      setSubmitStatus('success')
-      setFormData({ name: '', email: '', subject: '', message: '' })
+    // Check if email functionality is enabled
+    const emailEnabled = import.meta.env.VITE_ENABLE_EMAIL === 'true'
+    
+    try {
+      if (emailEnabled) {
+        // EmailJS configuration from environment variables
+        const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID
+        const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
+        const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+        
+        if (!serviceId || !templateId || !publicKey) {
+          throw new Error('EmailJS configuration missing')
+        }
+
+        const templateParams = {
+          from_name: formData.name,
+          from_email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+          to_email: 'mouryas318@gmail.com'
+        }
+
+        // Send email using EmailJS
+        await emailjs.send(serviceId, templateId, templateParams, publicKey)
+        
+        setSubmitStatus('success')
+        setFormData({ name: '', email: '', subject: '', message: '' })
+      } else {
+        // Development mode or EmailJS not configured - use mailto fallback
+        throw new Error('Email service not configured')
+      }
+    } catch (error) {
+      console.error('Email Error:', error)
       
-      // Reset status after 3 seconds
-      setTimeout(() => {
-        setSubmitStatus(null)
-      }, 3000)
-    }, 1500)
+      // Fallback: Open default email client
+      const subject = encodeURIComponent(formData.subject)
+      const body = encodeURIComponent(
+        `From: ${formData.name} (${formData.email})\n\n${formData.message}`
+      )
+      const mailtoLink = `mailto:mouryas318@gmail.com?subject=${subject}&body=${body}`
+      
+      window.open(mailtoLink, '_blank')
+      setSubmitStatus('fallback')
+    }
+    
+    setIsSubmitting(false)
   }
 
   const contactInfo = [
@@ -68,6 +106,12 @@ const Contact = () => {
       icon: <Linkedin className="w-6 h-6" />,
       url: "https://www.linkedin.com/in/shivam318",
       color: "hover:text-blue-600"
+    },
+    {
+      name: "X (Twitter)",
+      icon: <Twitter className="w-6 h-6" />,
+      url: "https://x.com/shivammourya_",
+      color: "hover:text-gray-900 dark:hover:text-white"
     }
   ]
 
@@ -187,7 +231,7 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                       className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-all duration-200"
-                      placeholder="John Doe"
+                      placeholder="Your Name"
                     />
                   </div>
 
@@ -203,7 +247,7 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                       className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-all duration-200"
-                      placeholder="john@example.com"
+                      placeholder="email@example.com"
                     />
                   </div>
                 </div>
@@ -275,6 +319,44 @@ const Contact = () => {
                       <p className="text-green-800 dark:text-green-200 font-medium">
                         Message sent successfully! I'll get back to you soon.
                       </p>
+                    </div>
+                  </div>
+                )}
+
+                {/* Fallback Message */}
+                {submitStatus === 'fallback' && (
+                  <div className="p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg">
+                    <div className="flex items-center gap-2">
+                      <div className="w-5 h-5 bg-blue-500 rounded-full flex items-center justify-center">
+                        <Mail className="w-3 h-3 text-white" />
+                      </div>
+                      <p className="text-blue-800 dark:text-blue-200 font-medium">
+                        Email client opened! Please send the message from your default email app.
+                      </p>
+                    </div>
+                  </div>
+                )}
+
+                {/* Error Message */}
+                {submitStatus === 'error' && (
+                  <div className="p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
+                    <div className="flex items-center gap-2">
+                      <div className="w-5 h-5 bg-red-500 rounded-full flex items-center justify-center">
+                        <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                        </svg>
+                      </div>
+                      <div>
+                        <p className="text-red-800 dark:text-red-200 font-medium">
+                          Oops! Something went wrong.
+                        </p>
+                        <p className="text-red-600 dark:text-red-300 text-sm mt-1">
+                          Please try again or contact me directly at{' '}
+                          <a href="mailto:mouryas318@gmail.com" className="underline hover:text-red-800 dark:hover:text-red-100">
+                            mouryas318@gmail.com
+                          </a>
+                        </p>
+                      </div>
                     </div>
                   </div>
                 )}
