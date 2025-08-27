@@ -1,18 +1,6 @@
-import { User, Heart, Target, Download, ExternalLink } from 'lucide-react'
+import { User, Heart, Target } from 'lucide-react'
 
 const About = () => {
-  const handleDownloadResume = () => {
-    const link = document.createElement('a')
-    link.href = '/Shivam_Mourya_Resume.pdf'
-    link.download = 'Shivam_Mourya_Resume.pdf'
-    document.body.appendChild(link)
-    link.click()
-    document.body.removeChild(link)
-  }
-
-  const handleViewResume = () => {
-    window.open('/Shivam_Mourya_Resume.pdf', '_blank')
-  }
   return (
     <section id="about" className="py-16 md:py-24 bg-white dark:bg-gray-900">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -33,16 +21,16 @@ const About = () => {
               </h3>
               
               <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                Passionate Full-Stack Developer with expertise in React.js, Tailwind CSS, and modern JavaScript 
-                for building dynamic web applications. Proficient in backend technologies including Node.js, 
-                Express.js, and JWT for creating secure, scalable solutions.
+                Full-Stack Developer proficient in React.js, Tailwind CSS, HTML, and JavaScript, with expertise 
+                in building dynamic web applications. Skilled in backend technologies like Node.js, Express.js, 
+                JWT, and bcrypt, ensuring seamless integration of user-friendly interfaces with secure 
+                server-side functionalities.
               </p>
               
               <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                Currently pursuing Computer Science Engineering at Chandigarh University with a 7.3 CGPA. 
-                Actively expanding my skill set by learning <span className="text-primary-600 dark:text-primary-400 font-medium">Generative AI</span> technologies 
-                and <span className="text-primary-600 dark:text-primary-400 font-medium">Docker</span> containerization to build more innovative 
-                and scalable applications. Regular participant in hackathons and coding competitions.
+                Currently pursuing Computer Science Engineering at Chandigarh University with a 7.4 CGPA. 
+                Passionate about continuous learning and staying up-to-date with industry trends to deliver 
+                high-quality, innovative solutions. Active participant in hackathons and coding competitions.
               </p>
 
               <div className="flex flex-wrap gap-4 pt-4">
@@ -75,7 +63,7 @@ const About = () => {
                   </div>
                   <div className="flex justify-between">
                     <span className="text-gray-600 dark:text-gray-300">Degree:</span>
-                    <span className="font-medium text-gray-900 dark:text-white">B.Tech CSE (7.3 CGPA)</span>
+                    <span className="font-medium text-gray-900 dark:text-white">B.Tech CSE (7.4 CGPA)</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-gray-600 dark:text-gray-300">Status:</span>
@@ -85,32 +73,6 @@ const About = () => {
                     <span className="text-gray-600 dark:text-gray-300">Email:</span>
                     <span className="font-medium text-gray-900 dark:text-white">mouryas318@gmail.com</span>
                   </div>
-                </div>
-              </div>
-
-              {/* Resume Download Section */}
-              <div className="bg-white dark:bg-gray-800 p-6 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm">
-                <h4 className="font-semibold text-gray-900 dark:text-white mb-4">
-                  Resume
-                </h4>
-                <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
-                  Download or view my complete resume with detailed experience and skills.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-3">
-                  <button
-                    onClick={handleDownloadResume}
-                    className="flex items-center justify-center gap-2 bg-primary-600 hover:bg-primary-700 text-white font-medium py-2 px-4 rounded-lg transition-all duration-200 text-sm"
-                  >
-                    <Download size={16} />
-                    Download PDF
-                  </button>
-                  <button
-                    onClick={handleViewResume}
-                    className="flex items-center justify-center gap-2 border border-primary-600 text-primary-600 hover:bg-primary-50 dark:border-primary-400 dark:text-primary-400 dark:hover:bg-gray-700 font-medium py-2 px-4 rounded-lg transition-all duration-200 text-sm"
-                  >
-                    <ExternalLink size={16} />
-                    View Online
-                  </button>
                 </div>
               </div>
             </div>

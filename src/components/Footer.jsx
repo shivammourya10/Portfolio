@@ -64,8 +64,8 @@ const Footer = () => {
             <div className="space-y-4">
               <h3 className="text-xl font-bold mb-4">Shivam Mourya</h3>
               <p className="text-gray-300 leading-relaxed">
-                Full-Stack Developer passionate about modern web technologies and innovation. 
-                Currently learning GenAI and Docker while pursuing Computer Science Engineering at Chandigarh University.
+                Full-Stack Developer proficient in React.js, Node.js, and modern web technologies. 
+                Currently pursuing Computer Science Engineering at Chandigarh University.
               </p>
               <div className="flex items-center gap-2 text-gray-300">
                 <span>Open to opportunities and collaborations</span>
