@@ -57,6 +57,9 @@ const Skills = () => {
         { name: "HTML/CSS", icon: "🌐" },
         { name: "Tailwind CSS", icon: "🎨" },
         { name: "MySQL", icon: "🗄️" },
+        { name: "PostgreSQL", icon: "🐘" },
+        { name: "Drizzle", icon: "🌊" },
+        { name: "Docker", icon: "🐳" },
         { name: "C/C++", icon: "⚙️" },
         { name: "JWT Auth", icon: "🔐" },
         { name: "Git", icon: "📝" },
@@ -226,10 +229,6 @@ const Skills = () => {
                 animate={inView ? { opacity: 1, scale: 1 } : {}}
                 transition={{ duration: 0.6, delay: 0.6 }}
               >
-                <div className="flex items-center gap-3 bg-white dark:bg-gray-800 px-6 py-3 rounded-full shadow-lg border border-blue-200 dark:border-gray-600">
-                  <span className="text-2xl">🐳</span>
-                  <span className="font-semibold text-blue-600 dark:text-blue-400">Docker</span>
-                </div>
                 <div className="flex items-center gap-3 bg-white dark:bg-gray-800 px-6 py-3 rounded-full shadow-lg border border-purple-200 dark:border-gray-600">
                   <span className="text-2xl">🤖</span>
                   <span className="font-semibold text-purple-600 dark:text-purple-400">GenAI</span>

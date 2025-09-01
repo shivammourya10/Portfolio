@@ -8,7 +8,7 @@ const Education = () => {
       institution: "Chandigarh University",
       location: "Chandigarh, India",
       duration: "Aug 2022 - Present",
-      cgpa: "7.3/10",
+      cgpa: "7.4/10",
       status: "Pursuing",
       description: "Specializing in Full-Stack Development and Software Engineering. Active in coding competitions and technical projects.",
       coursework: [
@@ -23,6 +23,7 @@ const Education = () => {
       ],
       achievements: [
         "Top 1% in NPTEL Cloud Computing Course",
+        "Top 2 in Gen AI Hackathon",
         "Top 3 in CSE Competition (2023)",
         "Top 5 in MIT Hackathon (200+ teams)"
       ]
@@ -54,7 +55,7 @@ const Education = () => {
       institution: "D.A.V Public School",
       location: "Gaya, Bihar", 
       duration: "2017 - 2019",
-      percentage: "81%",
+      percentage: "79%",
       status: "Completed",
       description: "Foundation education with strong performance in Mathematics and Science subjects.",
       coursework: [

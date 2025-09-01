@@ -43,6 +43,15 @@ const Achievements = () => {
     },
     {
       id: 2,
+      title: "Top 2 in Gen AI Hackathon",
+      category: "Competition",
+      date: "2024",
+      description: "Secured 2nd position in the prestigious Gen AI Hackathon, showcasing innovative AI solutions and technical expertise.",
+      icon: <Medal className="w-8 h-8" />,
+      color: "from-purple-400 to-pink-500"
+    },
+    {
+      id: 3,
       title: "Top 5 in MIT Hackathon",
       category: "Competition",
       date: "2024",
@@ -51,7 +60,7 @@ const Achievements = () => {
       color: "from-blue-400 to-purple-500"
     },
     {
-      id: 3,
+      id: 4,
       title: "3rd Position in CSE 2nd Year Software Category",
       category: "Competition",
       date: "2023",

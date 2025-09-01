@@ -81,6 +81,25 @@ const Projects = () => {
     },
     {
       id: 3,
+      title: "RAG Chat",
+      category: "genai",
+      description: "This project implements a Retrieval-Augmented Generation (RAG) system in JavaScript. It allows you to chat with a PDF document by leveraging the power of Large Language Models (LLMs) and vector databases.",
+      image: AIAgenticIDEImage,
+      technologies: ["JavaScript", "RAG", "Vector Database", "LLM", "PDF Processing", "Natural Language"],
+      githubUrl: "https://github.com/shivammourya10/RAG-using-.js.git",
+      liveUrl: null,
+      featured: true,
+      date: "2024",
+      highlights: [
+        "Chat with PDF documents using natural language",
+        "Retrieval-Augmented Generation (RAG) implementation",
+        "Vector database integration for document search",
+        "Large Language Model powered responses",
+        "Intelligent document understanding and context"
+      ]
+    },
+    {
+      id: 4,
       title: "MissSyntax - AI Coding Assistant",
       category: "genai",
       description: "A beautiful AI girlfriend chat application that provides coding help and emotional support, powered by Google Gemini AI with modern glassmorphism UI.",
@@ -99,7 +118,7 @@ const Projects = () => {
       ]
     },
     {
-      id: 4,
+      id: 5,
       title: "Custom AI Agent",
       category: "genai",
       description: "An intelligent conversational AI agent that performs multiple tasks through natural language commands, demonstrating real-world AI agent capabilities.",
@@ -118,7 +137,7 @@ const Projects = () => {
       ]
     },
     {
-      id: 5,
+      id: 6,
       title: "AI Agentic IDE",
       category: "genai",
       description: "An AI-powered development tool that automatically creates complete websites using natural language commands and terminal execution.",
@@ -137,7 +156,7 @@ const Projects = () => {
       ]
     },
     {
-      id: 6,
+      id: 7,
       title: "AI Code Editor",
       category: "genai",
       description: "A modern web application for generating, editing, previewing, and publishing web projects to Netlify with AI-powered code generation.",
@@ -156,7 +175,7 @@ const Projects = () => {
       ]
     },
     {
-      id: 7,
+      id: 8,
       title: "PrettyKidsCare - School Management System",
       category: "freelance",
       description: "A comprehensive school website with a powerful backend admin panel for complete content management. Features CRUD operations for syllabus, fee structure, festival galleries, and comprehensive school data management.",
@@ -176,7 +195,7 @@ const Projects = () => {
       ]
     },
     {
-      id: 8,
+      id: 9,
       title: "DJ Mickey - Portfolio Website",
       category: "freelance",
       description: "A stunning DJ portfolio website featuring dark neon aesthetics with smooth animations and interactive elements. Built with React and enhanced with dynamic video integration and immersive user experience.",
@@ -263,9 +282,9 @@ const Projects = () => {
               initial="hidden"
               animate={inView ? "visible" : "hidden"}
             >
-              {featuredProjects.map((project) => (
+              {featuredProjects.map((project, index) => (
                 <motion.div
-                  key={project.id}
+                  key={`featured-${project.id}-${index}`}
                   className="group relative"
                   variants={itemVariants}
                   whileHover={{ y: -10 }}
@@ -381,9 +400,9 @@ const Projects = () => {
             initial="hidden"
             animate={inView ? "visible" : "hidden"}
           >
-            {filteredProjects.map((project) => (
+            {filteredProjects.map((project, index) => (
               <motion.div
-                key={project.id}
+                key={`all-${project.id}-${index}`}
                 className="group relative"
                 variants={itemVariants}
                 whileHover={{ y: -5 }}
